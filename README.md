@@ -19,7 +19,7 @@ Le marché existe pourtant (prestataires actifs sur TikTok, Instagram, Bricoram,
 | Fichier | Rôle |
 |---|---|
 | [docs/01-etude-marche.md](docs/01-etude-marche.md) | Marché Oran : concurrence, tarifs constatés, canaux |
-| [docs/02-site-odoo.md](docs/02-site-odoo.md) | Guide de déploiement Odoo One App Free + SEO local |
+| [docs/02-site-deploiement.md](docs/02-site-deploiement.md) | Architecture du site statique, limites Odoo, options de déploiement + SEO local |
 | [docs/03-strategie-rs.md](docs/03-strategie-rs.md) | Stratégie Instagram / TikTok / Facebook / WhatsApp |
 
 ## Décisions actuelles
@@ -34,7 +34,7 @@ Le marché existe pourtant (prestataires actifs sur TikTok, Instagram, Bricoram,
 - **Hébergement OCI écarté** : la VM AMD disponible est trop petite/déjà chargée
   (l'ARM Always Free n'a pas été obtenu).
 - **Réservation** : bouton WhatsApp (wa.me), pas de module RDV.
-- **Langue** : français seul (option FR + arabe documentée dans `02-site-odoo.md`).
+- **Langue** : français seul (option FR + arabe documentée dans `02-site-deploiement.md`).
 
 ## Contenu du dossier `site/`
 
