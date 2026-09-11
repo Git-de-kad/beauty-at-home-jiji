@@ -24,15 +24,33 @@ Le marché existe pourtant (prestataires actifs sur TikTok, Instagram, Bricoram,
 
 ## Décisions actuelles
 
-- **Périmètre** : site vitrine simple (une seule app Odoo → pas d'appointments ni
-  eCommerce, sinon le plan devient payant). Réservation = bouton WhatsApp.
+- **Approche** : site statique codé par les agents (dossier `site/`), PAS construit
+  dans l'éditeur Odoo — l'éditeur Odoo n'est pas automatisable (pas d'API) et
+  l'Opérateur compte sur les agents pour tout faire. Déployable tel quel sur
+  Cloudflare Pages (ou tout hébergeur statique).
+- **Domaine** : décision reportée — commencer par la piste gratuite Odoo
+  (domaine offert 1 an, à vérifier sans souscription payante), repli
+  Cloudflare Registrar ~10 $/an. Voir `site/DEPLOY.md`.
+- **Hébergement OCI écarté** : la VM AMD disponible est trop petite/déjà chargée
+  (l'ARM Always Free n'a pas été obtenu).
+- **Réservation** : bouton WhatsApp (wa.me), pas de module RDV.
 - **Langue** : français seul (option FR + arabe documentée dans `02-site-odoo.md`).
-- **Nom de domaine** : à choisir par la coiffeuse — propositions dans `02-site-odoo.md`.
+
+## Contenu du dossier `site/`
+
+| Fichier | Rôle |
+|---|---|
+| `site/index.html` | Site one-page (hero, prestations/tarifs, galerie, avis, contact) |
+| `site/css/style.css` | Styles (rose poudré / doré, mobile-first) |
+| `site/js/main.js` | Numéro WhatsApp (seule config à éditer) + menu mobile |
+| `site/PERSONNALISER.md` | Checklist de personnalisation (photos, tarifs, prénom…) |
+| `site/DEPLOY.md` | Mise en ligne Pages + scénario domaine |
 
 ## Statut
 
 - [x] Étude de marché + documentation (2026-09-11)
-- [ ] Choix du nom de domaine + création du compte Odoo
-- [ ] Construction du site (pages, galerie, formulaire)
+- [x] Site statique one-page construit et vérifié (2026-09-11) — `site/`
+- [ ] Personnalisation : prénom, numéro WhatsApp, tarifs réels, photos
+- [ ] Choix du nom de domaine (piste Odoo gratuite puis repli CF) + mise en ligne
 - [ ] Google Business Profile
 - [ ] Lancement RS + premières publications

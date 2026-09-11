@@ -1,0 +1,208 @@
+/* Coiffure à domicile — Oran
+   Palette : rose poudré / doré / blanc cassé — mobile-first */
+
+:root {
+  --rose: #d8a7a0;
+  --rose-dark: #b97f78;
+  --or: #c9a24b;
+  --or-soft: #e8d9b8;
+  --encre: #3d3436;
+  --encre-soft: #7a6d70;
+  --fond: #fbf7f4;
+  --fond-alt: #f4ebe6;
+  --blanc: #ffffff;
+  --whatsapp: #25d366;
+  --whatsapp-dark: #1da851;
+  --radius: 16px;
+  --ombre: 0 10px 30px rgba(61, 52, 54, .08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', system-ui, sans-serif;
+  color: var(--encre);
+  background: var(--fond);
+  line-height: 1.6;
+  font-size: 17px;
+}
+
+h1, h2, h3, .brand {
+  font-family: 'Playfair Display', Georgia, serif;
+  line-height: 1.2;
+}
+
+.container { width: min(1080px, 92%); margin-inline: auto; }
+
+/* ---------- Header ---------- */
+.header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(251, 247, 244, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(61, 52, 54, .06);
+}
+.header-inner { display: flex; align-items: center; gap: 24px; padding: 14px 0; }
+.brand { font-size: 1.35rem; font-weight: 700; color: var(--encre); text-decoration: none; }
+.brand span { color: var(--rose-dark); font-style: italic; }
+.nav { display: flex; gap: 22px; margin-left: auto; }
+.nav a { color: var(--encre-soft); text-decoration: none; font-weight: 500; font-size: .95rem; }
+.nav a:hover { color: var(--rose-dark); }
+.btn-header { padding: 8px 18px; font-size: .9rem; }
+.nav-toggle {
+  display: none; margin-left: auto;
+  background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--encre);
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-block; text-decoration: none; text-align: center;
+  border-radius: 999px; font-weight: 600; cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: var(--whatsapp); color: #fff;
+  padding: 14px 30px; box-shadow: 0 8px 20px rgba(37, 211, 102, .35);
+}
+.btn-primary:hover { background: var(--whatsapp-dark); }
+.btn-ghost {
+  border: 1.5px solid var(--rose-dark); color: var(--rose-dark); padding: 13px 28px;
+}
+.btn-ghost:hover { background: var(--rose-dark); color: #fff; }
+.btn-big { font-size: 1.1rem; padding: 16px 40px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(216, 167, 160, .25), transparent 55%),
+    radial-gradient(ellipse at 90% 90%, rgba(201, 162, 75, .18), transparent 50%),
+    var(--fond);
+  padding: 72px 0 64px;
+  text-align: center;
+}
+.hero-kicker {
+  text-transform: uppercase; letter-spacing: 3px; font-size: .8rem;
+  color: var(--or); font-weight: 600; margin-bottom: 16px;
+}
+.hero h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); font-weight: 600; }
+.hero h1 em { color: var(--rose-dark); font-style: italic; }
+.hero-sub {
+  max-width: 560px; margin: 20px auto 30px; color: var(--encre-soft); font-size: 1.08rem;
+}
+.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.zones {
+  list-style: none; display: flex; gap: 10px; justify-content: center;
+  flex-wrap: wrap; margin-top: 34px;
+}
+.zones li {
+  background: var(--blanc); border: 1px solid rgba(201, 162, 75, .35);
+  color: var(--encre-soft); border-radius: 999px; padding: 5px 16px; font-size: .85rem;
+}
+
+/* ---------- Pourquoi à domicile ---------- */
+.why { padding: 26px 0 10px; }
+.why-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+}
+.why-card {
+  background: var(--blanc); border-radius: var(--radius); padding: 26px 22px;
+  box-shadow: var(--ombre); text-align: center;
+}
+.why-icon { font-size: 2rem; margin-bottom: 10px; }
+.why-card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+.why-card p { color: var(--encre-soft); font-size: .95rem; }
+
+/* ---------- Sections ---------- */
+.section { padding: 68px 0; }
+.section-alt { background: var(--fond-alt); }
+.section-title { text-align: center; font-size: clamp(1.7rem, 4.5vw, 2.4rem); }
+.section-title em { color: var(--rose-dark); font-style: italic; }
+.section-sub {
+  text-align: center; color: var(--encre-soft); max-width: 560px; margin: 12px auto 40px;
+}
+
+/* ---------- Cartes prestations / avis ---------- */
+.cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+}
+.card {
+  background: var(--blanc); border-radius: var(--radius); padding: 26px 22px;
+  box-shadow: var(--ombre); display: flex; flex-direction: column;
+}
+.card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.card-desc { color: var(--encre-soft); font-size: .95rem; flex: 1; }
+.card-price { margin-top: 14px; color: var(--encre-soft); font-size: .95rem; }
+.card-price strong { color: var(--or); font-size: 1.25rem; }
+.card-highlight {
+  background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+  color: #fff;
+}
+.card-highlight .card-desc { color: rgba(255, 255, 255, .9); }
+.card-highlight .card-price { color: rgba(255, 255, 255, .85); }
+.card-highlight .card-price strong { color: #fff; }
+
+.avis p { font-size: .98rem; flex: 1; }
+.avis footer { margin-top: 14px; color: var(--or); font-style: italic; font-size: .9rem; }
+
+/* ---------- Galerie ---------- */
+.gallery {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.gallery .ph {
+  border-radius: var(--radius); overflow: hidden; background: var(--blanc);
+  box-shadow: var(--ombre); position: relative;
+}
+.gallery img { display: block; width: 100%; height: 240px; object-fit: cover; }
+.gallery figcaption {
+  padding: 10px 14px; font-size: .9rem; color: var(--encre-soft); font-weight: 500;
+}
+
+/* ---------- CTA contact ---------- */
+.section-cta {
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(201, 162, 75, .22), transparent 55%),
+    linear-gradient(135deg, #4a3d40, #3d3436);
+  color: #fff; text-align: center;
+}
+.cta-inner h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); }
+.cta-inner p { max-width: 520px; margin: 16px auto 30px; color: rgba(255, 255, 255, .8); }
+.socials { margin-top: 28px; display: flex; gap: 26px; justify-content: center; }
+.socials a { color: var(--or-soft); text-decoration: none; font-weight: 500; }
+.socials a:hover { color: #fff; }
+
+/* ---------- Footer ---------- */
+.footer { background: #2e2729; color: rgba(255, 255, 255, .7); text-align: center; padding: 28px 0; }
+.footer-small { font-size: .85rem; margin-top: 6px; }
+.footer a { color: var(--whatsapp); text-decoration: none; }
+
+/* ---------- Bouton WhatsApp flottant ---------- */
+.wa-float {
+  position: fixed; bottom: 22px; right: 22px; z-index: 60;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--whatsapp); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, .45);
+  transition: transform .15s ease;
+}
+.wa-float:hover { transform: scale(1.08); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .cards, .gallery, .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; background: var(--blanc); padding: 20px 6%;
+    gap: 16px; box-shadow: var(--ombre); border-bottom: 1px solid rgba(61,52,54,.08);
+  }
+  .nav.open { display: flex; }
+  .nav-toggle { display: block; }
+  .btn-header { display: none; }
+}
+@media (max-width: 560px) {
+  .cards, .gallery, .why-grid { grid-template-columns: 1fr; }
+  .hero { padding: 52px 0 48px; }
+  .section { padding: 52px 0; }
+  .gallery img { height: 200px; }
+}
