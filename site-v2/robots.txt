@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Ne pas indexer les dossiers de travail (variantes de design, aperçus)
+Disallow: /variantes/
+Disallow: /apercus/
+
+# ⚠️ Remplacer par le vrai domaine après la mise en ligne
+Sitemap: https://coiffeuse-oran.example/sitemap.xml

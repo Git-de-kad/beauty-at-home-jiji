@@ -1,0 +1,180 @@
+/* ============================================================
+   VARIANTE C — Clean girl minimal
+   Crème & rose poudré, Instrument Serif italic, arrondis doux,
+   esprit feed Instagram 2025.
+   ============================================================ */
+
+:root {
+  --cream: #faf5ef;
+  --blush: #f3e2d8;
+  --blush-2: #eccfc0;
+  --rose: #c98d76;
+  --cocoa: #43352b;
+  --cocoa-soft: #8a7a6c;
+  --white: #fffdfb;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream); color: var(--cocoa);
+  font-family: var(--sans); font-weight: 400; font-size: 1rem; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+.serif-it { font-family: var(--serif); font-style: italic; font-weight: 400; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* ---------- Header ---------- */
+.header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--cream) 85%, transparent); backdrop-filter: blur(12px); }
+.header-inner {
+  max-width: 1240px; margin: 0 auto; padding: 1rem 2rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.brand { font-weight: 600; letter-spacing: -0.01em; font-size: 1.15rem; }
+.brand-dot { color: var(--rose); }
+.nav { display: flex; gap: 1.8rem; font-size: 0.9rem; color: var(--cocoa-soft); }
+.nav a:hover { color: var(--rose); }
+
+.btn-pill {
+  display: inline-block; border-radius: 999px; padding: 0.8rem 1.8rem;
+  font-size: 0.88rem; font-weight: 500; transition: transform .25s ease, box-shadow .25s ease;
+}
+.btn-pill:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(67, 53, 43, 0.14); }
+.btn-pill-dark { background: var(--cocoa); color: var(--white); }
+.btn-pill-soft { background: var(--blush); color: var(--cocoa); }
+.btn-big { padding: 1.1rem 2.6rem; font-size: 1rem; }
+
+/* ---------- Hero ---------- */
+.hero { max-width: 1240px; margin: 0 auto; padding: clamp(2.5rem, 6vw, 5rem) 2rem 0; }
+.hero-grid {
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2.5rem, 5vw, 5rem); align-items: center;
+}
+.hero-hello { font-size: 1rem; color: var(--rose); margin-bottom: 1.2rem; }
+.hero-title {
+  font-weight: 500; letter-spacing: -0.03em;
+  font-size: clamp(2.6rem, 5.6vw, 4.4rem); line-height: 1.08;
+}
+.hero-title .serif-it { color: var(--rose); font-size: 1.05em; }
+.hero-sub { margin-top: 1.4rem; color: var(--cocoa-soft); max-width: 40ch; }
+.hero-actions { display: flex; gap: 1rem; margin-top: 2.2rem; flex-wrap: wrap; }
+.hero-mini { margin-top: 1.4rem; font-size: 0.85rem; color: var(--rose); }
+
+.hero-visual { position: relative; }
+.hero-photo {
+  border-radius: clamp(1.5rem, 3vw, 2.5rem); overflow: hidden;
+  aspect-ratio: 4 / 5; max-height: 560px;
+}
+.hero-sticker {
+  position: absolute; left: -1.2rem; bottom: 2rem;
+  background: var(--white); border-radius: 999px; padding: 1rem 1.6rem;
+  display: flex; flex-direction: column; align-items: center; line-height: 1.1;
+  box-shadow: 0 14px 34px rgba(67, 53, 43, 0.16);
+}
+.hero-sticker .serif-it { font-size: 1.6rem; color: var(--rose); }
+.hero-sticker small { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cocoa-soft); }
+
+/* ---------- Ticker ---------- */
+.ticker { margin-top: clamp(3rem, 7vw, 5.5rem); background: var(--blush); overflow: hidden; padding: 1rem 0; }
+.ticker-track {
+  display: flex; gap: 2.2rem; width: max-content;
+  font-family: var(--serif); font-style: italic; font-size: 1.25rem; color: var(--cocoa);
+  animation: tick 26s linear infinite;
+}
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* ---------- Sections ---------- */
+.section { max-width: 1240px; margin: 0 auto; padding: clamp(4rem, 8vw, 6.5rem) 2rem; }
+.section-blush { max-width: none; background: var(--white); }
+.section-blush > * { max-width: 1240px; margin-left: auto; margin-right: auto; }
+.section-title { font-weight: 500; letter-spacing: -0.02em; font-size: clamp(2rem, 4.4vw, 3.2rem); }
+.section-title .serif-it { color: var(--rose); }
+.section-sub { margin-top: 0.8rem; color: var(--cocoa-soft); max-width: 52ch; }
+
+/* ---------- Prestations ---------- */
+.prest-list { margin-top: 2.6rem; display: flex; flex-direction: column; gap: 1rem; }
+.prest {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 1.4rem; align-items: center;
+  background: var(--white); border-radius: 1.6rem; padding: 1.5rem 1.8rem;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.prest:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(67, 53, 43, 0.1); }
+.prest-emoji {
+  width: 52px; height: 52px; border-radius: 50%; background: var(--blush);
+  display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--rose);
+}
+.prest-body h3 { font-size: 1.15rem; font-weight: 600; }
+.prest-body h3 .serif-it { color: var(--rose); font-size: 1.15em; }
+.prest-body p { color: var(--cocoa-soft); font-size: 0.92rem; }
+.prest-price { font-weight: 600; white-space: nowrap; color: var(--cocoa); }
+.prest-star { background: var(--blush); }
+.prest-star .prest-emoji { background: var(--white); }
+
+/* ---------- Galerie ---------- */
+.gal-grid {
+  margin-top: 2.6rem; display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+.gal { border-radius: 1.6rem; overflow: hidden; position: relative; }
+.gal img { aspect-ratio: 4 / 5; height: auto; transition: transform .8s ease; }
+.gal:hover img { transform: scale(1.04); }
+.gal figcaption {
+  position: absolute; left: 0.9rem; bottom: 0.9rem;
+  background: color-mix(in srgb, var(--white) 90%, transparent);
+  border-radius: 999px; padding: 0.35rem 0.9rem;
+  font-family: var(--serif); font-style: italic; font-size: 0.95rem;
+}
+
+/* ---------- Avis ---------- */
+.avis-flow { margin-top: 2.6rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.avis { background: var(--white); border-radius: 1.6rem; padding: 1.8rem; }
+.avis p { font-family: var(--serif); font-style: italic; font-size: 1.2rem; line-height: 1.5; }
+.avis footer { margin-top: 1.1rem; font-size: 0.8rem; color: var(--rose); }
+
+/* ---------- CTA ---------- */
+.cta { padding: 0 2rem clamp(4rem, 8vw, 6.5rem); max-width: 1240px; margin: 0 auto; }
+.cta-card {
+  background: var(--blush); border-radius: clamp(2rem, 4vw, 3rem);
+  text-align: center; padding: clamp(3rem, 7vw, 5.5rem) 2rem;
+}
+.cta-kicker { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--rose); }
+.cta-title { font-weight: 500; font-size: clamp(2rem, 4.6vw, 3.4rem); letter-spacing: -0.02em; margin-top: 0.8rem; }
+.cta-title .serif-it { color: var(--rose); }
+.cta-sub { margin: 1.2rem auto 0; max-width: 46ch; color: var(--cocoa-soft); }
+.cta-card .btn-big { margin-top: 2.2rem; }
+.cta-zones { margin-top: 1.8rem; font-size: 0.82rem; color: var(--cocoa-soft); }
+
+/* ---------- Footer ---------- */
+.footer { border-top: 1px solid var(--blush-2); }
+.footer-inner {
+  max-width: 1240px; margin: 0 auto; padding: 1.6rem 2rem;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  font-size: 0.8rem; color: var(--cocoa-soft);
+}
+
+/* ---------- WhatsApp flottant ---------- */
+.wa-float {
+  position: fixed; right: 1.4rem; bottom: 1.4rem; z-index: 60;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--cocoa); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 28px rgba(67, 53, 43, 0.3);
+  transition: transform .3s ease;
+}
+.wa-float:hover { transform: scale(1.08); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-photo { aspect-ratio: 5 / 4; }
+  .gal-grid { grid-template-columns: 1fr 1fr; }
+  .avis-flow { grid-template-columns: 1fr; }
+  .prest { grid-template-columns: auto 1fr; }
+  .prest-price { grid-column: 2; }
+}

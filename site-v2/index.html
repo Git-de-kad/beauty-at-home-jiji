@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coiffeuse à Domicile à Oran — Coupe, Brushing, Mariées | Réservation WhatsApp</title>
+  <meta name="description" content="Coiffeuse professionnelle à domicile à Oran : coupe, brushing, soins, chignons et coiffures de mariée. Je me déplace chez vous. Réservation simple par WhatsApp.">
+  <link rel="canonical" href="/">
+  <meta property="og:title" content="Coiffeuse à Domicile à Oran — L'Atelier d'Amina">
+  <meta property="og:description" content="Coupe, brushing, soins et coiffures de mariée à domicile à Oran. Réservation simple par WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/hero.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    // Anti-FOUC : applique thème et langue avant le premier rendu
+    (function () {
+      try {
+        var t = localStorage.getItem('coiffure_theme') ||
+          (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+        var l = localStorage.getItem('coiffure_lang') || 'fr';
+        document.documentElement.setAttribute('lang', l);
+        document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+      } catch (e) {}
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "L'Atelier d'Amina — Coiffure à domicile Oran",
+    "description": "Coiffure à domicile à Oran : coupe, brushing, soins, chignons, mariées.",
+    "url": "https://coiffeuse-oran.example/",
+    "areaServed": ["Oran", "Bir El Djir", "Es Sénia", "Canastel", "Algérie"],
+    "availableLanguage": ["fr", "ar"],
+    "priceRange": "1000-10000 DZD"
+  }
+  </script>
+</head>
+<body data-page="accueil">
+
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" data-i18n="brand_name">L'Atelier <em>d'Hadjira</em></a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="index.html" aria-current="page" data-i18n="nav_accueil">Accueil</a>
+        <a href="prestations.html" data-i18n="nav_prestations">Prestations</a>
+        <a href="mariee.html" data-i18n="nav_mariee">Mariées</a>
+        <a href="beaute.html" data-i18n="nav_beaute">Beauté</a>
+        <a href="galerie.html" data-i18n="nav_galerie">Galerie</a>
+        <a href="contact.html" data-i18n="nav_contact">Contact</a>
+      </nav>
+      <div class="header-controls">
+        <button class="ctrl-btn" id="lang-toggle" aria-label="التبديل إلى العربية">
+          <span class="lang-label">عربي</span>
+        </button>
+        <button class="ctrl-btn" id="theme-toggle" aria-label="Activer le mode sombre">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M2 12h2.5M19.5 12H22M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        </button>
+        <a class="header-cta" data-wa data-i18n="btn_header_wa">Réserver ↗</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobile">
+    <a href="index.html" data-i18n="nav_accueil">Accueil</a>
+    <a href="prestations.html" data-i18n="nav_prestations">Prestations</a>
+    <a href="mariee.html" data-i18n="nav_mariee">Mariées</a>
+    <a href="beaute.html" data-i18n="nav_beaute">Beauté</a>
+    <a href="galerie.html" data-i18n="nav_galerie">Galerie</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
+    <a href="apropos.html" data-i18n="nav_apropos">À propos</a>
+    <p class="menu-note" data-i18n="contact_zones">Oran centre · Bir El Djir · Es Sénia · Canastel · et alentours</p>
+  </nav>
+
+  <main>
+    <!-- Hero éditorial -->
+    <section class="hero">
+      <p class="kicker reveal" data-i18n="kicker">Coiffeuse à domicile — Oran &amp; wilaya</p>
+      <h1 class="hero-title reveal" data-i18n="hero_title">
+        <span class="line">L'art du cheveu,</span>
+        <span class="line">chez <em>vous.</em></span>
+      </h1>
+      <div class="hero-row reveal">
+        <figure class="hero-figure">
+          <img src="assets/hero.jpg" alt="Séance de coiffure à domicile à Oran" fetchpriority="high">
+        </figure>
+        <div class="hero-aside">
+          <p class="lead" data-i18n="hero_sub">Coupe, brushing, soins et coiffures de mariée — je me déplace chez vous avec tout le matériel professionnel, dans le confort et l'intimité de votre maison.</p>
+          <a class="btn-line" data-wa data-i18n="hero_cta_wa">Prendre rendez-vous sur WhatsApp</a>
+          <p class="hero-note" data-i18n="hero_note">Réponse rapide du samedi au jeudi · Déplacement inclus</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bandeau défilant -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span data-i18n="mq_1">Brushing</span><span class="dot">·</span><span data-i18n="mq_2">Chignon mariée</span><span class="dot">·</span><span data-i18n="mq_3">Soins profonds</span><span class="dot">·</span><span data-i18n="mq_4">Balayage</span><span class="dot">·</span><span data-i18n="mq_5">Coupe femme</span><span class="dot">·</span>
+        <span data-i18n="mq_1">Brushing</span><span class="dot">·</span><span data-i18n="mq_2">Chignon mariée</span><span class="dot">·</span><span data-i18n="mq_3">Soins profonds</span><span class="dot">·</span><span data-i18n="mq_4">Balayage</span><span class="dot">·</span><span data-i18n="mq_5">Coupe femme</span><span class="dot">·</span>
+      </div>
+    </div>
+
+    <!-- Manifesto -->
+    <section class="manifesto">
+      <p class="reveal" data-i18n="manifesto_text">Pas de salon, pas d'attente, pas de trajet. <em>Un moment rien qu'à vous,</em> à la maison — avec la même exigence que les plus beaux salons.</p>
+      <a class="btn-line reveal" href="apropos.html" data-i18n="manifesto_link">Rencontrer Hadjira →</a>
+    </section>
+
+    <!-- Prestations -->
+    <section class="section" id="prestations">
+      <div class="section-head reveal">
+        <p class="label" data-i18n="label_prestations">Prestations &amp; tarifs</p>
+        <h2 data-i18n="prest_head">La carte</h2>
+      </div>
+      <p class="section-sub reveal" data-i18n="prest_sub">Déplacement inclus à Oran. Tarifs indicatifs — devis gratuit sur WhatsApp pour les mariées et événements.</p>
+      <ul class="menu">
+        <li class="menu-row reveal">
+          <span class="menu-num">01</span>
+          <div class="menu-body"><h3 data-i18n="menu_1_t">Coupe femme</h3><p data-i18n="menu_1_d">Coupe moderne et brushing adaptés à votre visage.</p></div>
+          <span class="menu-price" data-i18n="menu_1_p">dès 1 500 DA</span>
+        </li>
+        <li class="menu-row reveal">
+          <span class="menu-num">02</span>
+          <div class="menu-body"><h3 data-i18n="menu_2_t">Brushing &amp; wavy</h3><p data-i18n="menu_2_d">Lisse glamour, boucles souples ou ondulations naturelles.</p></div>
+          <span class="menu-price" data-i18n="menu_2_p">dès 2 000 DA</span>
+        </li>
+        <li class="menu-row reveal">
+          <span class="menu-num">03</span>
+          <div class="menu-body"><h3 data-i18n="menu_3_t">Enduit &amp; soins</h3><p data-i18n="menu_3_d">Soin nourrissant, protéines, kératine — force et brillance.</p></div>
+          <span class="menu-price" data-i18n="menu_3_p">dès 1 000 DA</span>
+        </li>
+        <li class="menu-row reveal">
+          <span class="menu-num">04</span>
+          <div class="menu-body"><h3 data-i18n="menu_4_t">Chignon &amp; soirée</h3><p data-i18n="menu_4_d">Chignons sophistiqués, fiançailles et invitations.</p></div>
+          <span class="menu-price" data-i18n="menu_4_p">dès 3 000 DA</span>
+        </li>
+        <li class="menu-row reveal">
+          <span class="menu-num">05</span>
+          <div class="menu-body"><h3 data-i18n="menu_5_t">Coloration &amp; balayage</h3><p data-i18n="menu_5_d">Couleur, racines, balayage lumineux — selon longueur.</p></div>
+          <span class="menu-price" data-i18n="menu_5_p">sur devis</span>
+        </li>
+        <li class="menu-row menu-row-accent reveal">
+          <span class="menu-num">06</span>
+          <div class="menu-body"><h3 data-i18n="menu_6_t">Forfait mariée</h3><p data-i18n="menu_6_d">Essai inclus, coiffure du jour J, pose voile et accessoires.</p></div>
+          <span class="menu-price" data-i18n="menu_6_p">sur rendez-vous</span>
+        </li>
+        <li class="menu-row reveal">
+          <span class="menu-num">07</span>
+          <div class="menu-body"><h3 data-i18n="menu_7_t">Onglerie</h3><p data-i18n="menu_7_d">Manucure, vernis semi-permanent, pose gel et capsules — des ongles impeccables.</p></div>
+          <span class="menu-price" data-i18n="menu_7_p">dès 1 500 DA</span>
+        </li>
+        <li class="menu-row reveal">
+          <span class="menu-num">08</span>
+          <div class="menu-body"><h3 data-i18n="menu_8_t">Maquillage</h3><p data-i18n="menu_8_d">Maquillage soirée, fiançailles et mariée — un teint qui tient toute la nuit.</p></div>
+          <span class="menu-price" data-i18n="menu_8_p">dès 2 500 DA</span>
+        </li>
+        <li class="menu-row reveal">
+          <span class="menu-num">09</span>
+          <div class="menu-body"><h3 data-i18n="menu_9_t">Extensions cheveux</h3><p data-i18n="menu_9_d">Toutes techniques : tresses, lace, à chaud, à froid, clip — volume et longueur sur mesure.</p></div>
+          <span class="menu-price" data-i18n="menu_9_p">sur devis</span>
+        </li>
+      </ul>
+      <p class="section-foot reveal" data-i18n="prest_foot">Déplacement inclus à Oran · Devis gratuit sur WhatsApp pour les mariées et événements</p>
+    </section>
+
+    <!-- Galerie horizontale -->
+    <section class="section section-gallery">
+      <div class="section-head reveal">
+        <p class="label" data-i18n="label_galerie">Galerie</p>
+        <h2 data-i18n="gal_head">Réalisations <em>récentes</em></h2>
+      </div>
+      <div class="strip">
+        <figure class="strip-item reveal">
+          <img src="assets/galerie/01.jpg" alt="Brushing wavy souple et brillant" loading="lazy">
+          <figcaption data-i18n="cap_1">Brushing wavy — à domicile, Bir El Djir</figcaption>
+        </figure>
+        <figure class="strip-item reveal">
+          <img src="assets/galerie/02.jpg" alt="Chignon de mariée" loading="lazy">
+          <figcaption data-i18n="cap_2">Chignon mariée — préparatifs à la maison</figcaption>
+        </figure>
+        <figure class="strip-item reveal">
+          <img src="assets/galerie/03.jpg" alt="Soin capillaire profond" loading="lazy">
+          <figcaption data-i18n="cap_3">Soin profond &amp; brillance</figcaption>
+        </figure>
+        <figure class="strip-item reveal">
+          <img src="assets/galerie/05.jpg" alt="Ondulé glamour de soirée" loading="lazy">
+          <figcaption data-i18n="cap_4">Ondulé glamour — soirée</figcaption>
+        </figure>
+        <figure class="strip-item reveal">
+          <img src="assets/galerie/06.jpg" alt="Balayage miel" loading="lazy">
+          <figcaption data-i18n="cap_5">Balayage miel</figcaption>
+        </figure>
+      </div>
+      <p class="strip-hint reveal" data-i18n="strip_hint">Faites défiler →</p>
+    </section>
+
+    <!-- Mariée -->
+    <section class="mariee">
+      <div class="mariee-inner">
+        <div class="mariee-text reveal">
+          <p class="label" data-i18n="label_mariee">Le jour J</p>
+          <h2 data-i18n="mariee_head">La mariée,<br><em>sereine</em></h2>
+          <p data-i18n="mariee_text">Les préparatifs se vivent chez vous, entourée des vôtres. Essai personnalisé en amont, coiffure du jour J, pose du voile et des accessoires — je reste jusqu'au dernier retouchage.</p>
+          <a class="btn-line btn-line-light" href="mariee.html" data-i18n="mariee_cta">Réserver votre date</a>
+        </div>
+        <figure class="mariee-figure reveal">
+          <img src="assets/galerie/02.jpg" alt="Coiffure de mariée réalisée à domicile" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- Avis -->
+    <section class="section">
+      <div class="section-head reveal">
+        <p class="label" data-i18n="label_avis">Elles m'ont fait confiance</p>
+        <h2 data-i18n="avis_head">Mots de <em>clientes</em></h2>
+      </div>
+      <div class="quotes">
+        <blockquote class="quote reveal">
+          <p data-i18n="avis_1_q">« Sublimée le jour de mon mariage, directement à la maison. Professionnelle, douce, d'une patience infinie. »</p>
+          <footer data-i18n="avis_1_a">Sarah — mariée, Oran</footer>
+        </blockquote>
+        <blockquote class="quote reveal">
+          <p data-i18n="avis_2_q">« Le brushing tient plusieurs jours. Je gagne deux heures de trajet et d'attente chaque semaine. »</p>
+          <footer data-i18n="avis_2_a">Nesrine — cliente régulière, Bir El Djir</footer>
+        </blockquote>
+        <blockquote class="quote reveal">
+          <p data-i18n="avis_3_q">« L'enduit a redonné vie à mes cheveux. Ponctuelle, et réponse toujours rapide sur WhatsApp. »</p>
+          <footer data-i18n="avis_3_a">Amina — Es Sénia</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+      <h2 class="contact-title reveal" data-i18n="contact_title">Réservez votre<br><em>créneau</em></h2>
+      <a class="btn-solid reveal" data-wa data-i18n="contact_btn">Écrire sur WhatsApp ↗</a>
+      <p class="contact-zones reveal" data-i18n="contact_zones">Oran centre · Bir El Djir · Es Sénia · Canastel · et alentours</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span data-i18n="footer_text">Coiffure à domicile — Oran, Algérie</span>
+      <nav class="footer-nav" aria-label="Navigation pied de page">
+        <a href="prestations.html" data-i18n="nav_prestations">Prestations</a>
+        <a href="mariee.html" data-i18n="nav_mariee">Mariées</a>
+        <a href="beaute.html" data-i18n="nav_beaute">Beauté</a>
+        <a href="galerie.html" data-i18n="nav_galerie">Galerie</a>
+        <a href="apropos.html" data-i18n="nav_apropos">À propos</a>
+        <a href="contact.html" data-i18n="nav_contact">Contact</a>
+      </nav>
+      <span data-i18n="footer_small">© 2026 — Site conçu avec soin.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+/* ============================================================
+   VARIANTE B — Noir & or bridal glam
+   Charbon profond, champagne doré, photos cinéma plein cadre.
+   ============================================================ */
+
+:root {
+  --bg: #100d0e;
+  --bg-2: #181314;
+  --ivory: #f3ece2;
+  --ivory-soft: rgba(243, 236, 226, 0.62);
+  --gold: #cfa86a;
+  --gold-deep: #a8814a;
+  --line: rgba(207, 168, 106, 0.28);
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Montserrat", system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--ivory);
+  font-family: var(--sans); font-weight: 300; font-size: 1rem; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+em { font-style: italic; color: var(--gold); }
+
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s ease; }
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* ---------- Header ---------- */
+.header {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  background: linear-gradient(to bottom, rgba(16, 13, 14, 0.85), transparent);
+}
+.header-inner {
+  max-width: 1320px; margin: 0 auto; padding: 1.4rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.brand { letter-spacing: 0.32em; font-size: 0.9rem; font-weight: 400; }
+.brand span { color: var(--gold); }
+.nav { display: flex; gap: 2.2rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ivory-soft); }
+.nav a:hover { color: var(--gold); }
+.header-cta {
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.18em;
+  border: 1px solid var(--gold); color: var(--gold);
+  padding: 0.6rem 1.5rem; transition: background .3s, color .3s;
+}
+.header-cta:hover { background: var(--gold); color: var(--bg); }
+
+/* ---------- Hero cinéma ---------- */
+.hero { position: relative; min-height: 100svh; display: flex; align-items: center; overflow: hidden; }
+.hero-bg, .hero-veil { position: absolute; inset: 0; }
+.hero-bg img { transform: scale(1.06); animation: slowzoom 14s ease forwards; }
+@keyframes slowzoom { to { transform: scale(1); } }
+.hero-veil {
+  background:
+    linear-gradient(to top, var(--bg) 4%, transparent 55%),
+    rgba(16, 13, 14, 0.45);
+}
+.hero-content { position: relative; max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; width: 100%; }
+.hero-kicker {
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.34em;
+  color: var(--gold); margin-bottom: 1.4rem;
+}
+.hero-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(3.4rem, 10vw, 8rem); line-height: 0.95; letter-spacing: -0.01em;
+}
+.hero-sub { max-width: 44ch; margin-top: 1.6rem; color: var(--ivory-soft); font-size: 1.05rem; }
+.hero-actions { display: flex; gap: 1.2rem; margin-top: 2.6rem; flex-wrap: wrap; }
+.btn-gold {
+  background: var(--gold); color: #1c150b;
+  font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.18em; font-weight: 500;
+  padding: 1.05rem 2.4rem; transition: background .3s;
+}
+.btn-gold:hover { background: var(--gold-deep); }
+.btn-ghost {
+  border: 1px solid var(--line); color: var(--ivory);
+  font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.18em;
+  padding: 1.05rem 2.4rem; transition: border-color .3s, color .3s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  color: var(--gold); animation: bob 2.2s ease-in-out infinite; font-size: 1.2rem;
+}
+@keyframes bob { 50% { transform: translate(-50%, 8px); } }
+
+/* ---------- Intro ---------- */
+.intro { border-bottom: 1px solid var(--line); }
+.intro-grid {
+  max-width: 1320px; margin: 0 auto; padding: clamp(4rem, 8vw, 7rem) 2.5rem;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(2rem, 4vw, 4rem);
+}
+.intro-num { font-family: var(--serif); font-style: italic; font-size: 1.6rem; color: var(--gold); }
+.intro-item h3 {
+  font-family: var(--serif); font-weight: 400; font-size: 1.7rem; margin: 0.8rem 0 0.6rem;
+}
+.intro-item p { color: var(--ivory-soft); font-size: 0.95rem; }
+
+/* ---------- Sections ---------- */
+.section { max-width: 1320px; margin: 0 auto; padding: clamp(4.5rem, 9vw, 8rem) 2.5rem; }
+.section-head { display: flex; align-items: baseline; gap: 1.6rem; margin-bottom: 3rem; flex-wrap: wrap; }
+.label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--gold); }
+.section-head h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem, 5vw, 3.8rem); }
+.section-sub { color: var(--ivory-soft); font-size: 0.9rem; margin-left: auto; }
+
+/* ---------- Prestations ---------- */
+.prest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 3.5rem; }
+.prest { padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+.prest-top { display: flex; align-items: baseline; gap: 1rem; }
+.prest-top h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; white-space: nowrap; }
+.prest-line { flex: 1; border-bottom: 1px dotted var(--line); }
+.prest-price { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.1em; white-space: nowrap; }
+.prest p { color: var(--ivory-soft); font-size: 0.92rem; margin-top: 0.4rem; }
+.prest-gold { border-bottom-color: var(--gold); }
+.prest-gold h3 { color: var(--gold); }
+
+/* ---------- Mariée plein cadre ---------- */
+.mariee { position: relative; min-height: 88svh; display: flex; align-items: center; overflow: hidden; }
+.mariee-bg, .mariee-veil { position: absolute; inset: 0; }
+.mariee-veil { background: linear-gradient(to right, rgba(16,13,14,0.92) 25%, rgba(16,13,14,0.35)); }
+.mariee-content { position: relative; max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; width: 100%; }
+.mariee-content h2 {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(2.6rem, 6.5vw, 5.2rem); line-height: 1; margin: 1.2rem 0 1.4rem;
+}
+.mariee-content p { color: var(--ivory-soft); max-width: 44ch; margin-bottom: 2.2rem; }
+
+/* ---------- Galerie mosaïque ---------- */
+.mosaic {
+  display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 240px; gap: 1rem;
+}
+.m-tall { grid-row: span 2; }
+.m-wide { grid-column: span 2; }
+.m-item { overflow: hidden; }
+.m-item img { transition: transform 1s ease, filter 1s ease; filter: saturate(0.92); }
+.m-item:hover img { transform: scale(1.05); filter: saturate(1.05); }
+
+/* ---------- Avis ---------- */
+.avis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.8rem, 3vw, 3rem); }
+.avis { border: 1px solid var(--line); padding: 2rem 1.8rem; }
+.stars { color: var(--gold); letter-spacing: 0.4em; font-size: 0.8rem; margin-bottom: 1rem; }
+.avis p { font-family: var(--serif); font-size: 1.2rem; font-style: italic; line-height: 1.5; }
+.avis footer { margin-top: 1.3rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ivory-soft); }
+
+/* ---------- Contact ---------- */
+.contact { text-align: center; padding: clamp(5rem, 10vw, 9rem) 2rem; border-top: 1px solid var(--line); }
+.contact-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(2.8rem, 7.5vw, 6rem); line-height: 1.02; margin-top: 1rem;
+}
+.btn-big { display: inline-block; margin-top: 2.6rem; }
+.contact-zones { margin-top: 2.2rem; font-size: 0.82rem; color: var(--ivory-soft); letter-spacing: 0.08em; }
+
+/* ---------- Footer ---------- */
+.footer { border-top: 1px solid var(--line); }
+.footer-inner {
+  max-width: 1320px; margin: 0 auto; padding: 1.8rem 2.5rem;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  font-size: 0.78rem; color: var(--ivory-soft); letter-spacing: 0.06em;
+}
+
+/* ---------- WhatsApp flottant ---------- */
+.wa-float {
+  position: fixed; right: 1.4rem; bottom: 1.4rem; z-index: 60;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--gold); color: #1c150b;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 30px rgba(207, 168, 106, 0.35);
+  transition: transform .3s ease;
+}
+.wa-float:hover { transform: scale(1.08); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .intro-grid, .avis-grid { grid-template-columns: 1fr; }
+  .prest-grid { grid-template-columns: 1fr; }
+  .mosaic { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+  .m-wide { grid-column: span 2; }
+}
