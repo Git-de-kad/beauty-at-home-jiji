@@ -1,7 +1,8 @@
 # 02 — Site & déploiement
 
-*Mis à jour le 2026-09-11 après décision : site statique codé par les agents,
-PAS de builder Odoo. Le site est construit (voir [`site/`](../site/)).*
+*Mis à jour le 2026-09-12 après refonte complète : site statique codé par les agents,
+palette Méditerranée Solaire & Terracotta, Dark Mode luxueux, et version bilingue
+Français / Arabe Algérie (RTL).*
 
 ## 1. Pourquoi pas l'éditeur Odoo (limites constatées)
 
@@ -15,28 +16,27 @@ site ne sera pas construit dans son éditeur :
 4. **Performance non maîtrisée** — stack Odoo complète, pas d'optimisation fine.
 5. **Portabilité quasi nulle** — impossible d'exporter proprement.
 6. **Non automatisable — le point décisif** : pas d'API pour éditer les pages.
-   L'Opérateur délègue tout aux agents (Hermes/Zai) ; un builder à cliquer à la
-   main ne rentre pas dans ce mode de fonctionnement. Un site statique dans un
-   repo git, si : chaque modification est une demande en langage naturel →
-   édition → commit → déploiement.
+   L'Opérateur délègue tout aux agents ; un builder à cliquer à la main ne
+   rentre pas dans ce mode de fonctionnement. Un site statique dans un repo git,
+   si : chaque modification est une demande en langage naturel → édition → commit → déploiement.
 
-## 2. Architecture retenue : site statique one-page
+## 2. Architecture retenue : site statique one-page bilingue
 
-Construit et vérifié le 2026-09-11 dans [`site/`](../site/) :
+Construit, optimisé et vérifié dans [`site/`](../site/) :
 
 ```
 site/
-├── index.html          # one-page : hero, prestations/tarifs, galerie, avis, contact
-├── css/style.css       # palette rose poudré / doré / blanc, mobile-first
-├── js/main.js          # SEULE config : numéro WhatsApp + menu mobile
-├── assets/             # favicon + galerie (placeholders SVG à remplacer par photos)
-├── PERSONNALISER.md    # checklist de personnalisation
-└── DEPLOY.md           # mise en ligne + scénarios domaine
+├── index.html          # One-page bilingue (hero split, prestations/tarifs, galerie HD, avis, contact)
+├── css/style.css       # Palette Terracotta / Dark Mode, support RTL, tokens CSS, mobile-first
+├── js/main.js          # Dictionnaire i18n FR/AR, Dark Mode, numéro WhatsApp + menu mobile
+├── assets/             # Photographies HD (hero.jpg, galerie 01.jpg à 06.jpg, favicon)
+├── PERSONNALISER.md    # Checklist de personnalisation (tarifs, textes, photos)
+└── DEPLOY.md           # Mise en ligne Pages + scénarios domaine
 ```
 
 Caractéristiques : zéro dépendance de build, un seul call-to-action (WhatsApp,
-message prérempli, numéro centralisé dans `main.js`), SEO local intégré
-(méta, Open Graph, Schema.org HairSalon), mobile-first vérifié par captures.
+messages préremplis dynamiques selon la langue), Dark Mode persistant sans scintillement,
+SEO local intégré (méta, Open Graph, Schema.org HairSalon multilingue).
 
 ## 3. Hébergement
 
@@ -63,16 +63,20 @@ signalés chez des ISP algériens ([Cloudflare Community](https://community.clou
 2. **Repli** : Cloudflare Registrar ~10 $/an, prix coûtant.
 3. Propositions de nom : `coiffeuse-oran.com`, `[prenom]-coiffure-oran.com`.
 
-## 5. SEO local (inchangé, à faire après la mise en ligne)
+## 5. SEO local (à faire après la mise en ligne)
 
-- Métadonnées par page faites (titre ≤ 60 car., description contenant
-  « coiffeuse à domicile Oran ») — Schema.org HairSalon inclus.
+- Métadonnées multilingues faites (titre ≤ 60 car., description contenant
+  « coiffeuse à domicile Oran » / « كوافيز في الدار وهران ») — Schema.org HairSalon inclus.
 - **Google Business Profile** : catégorie « service de coiffure à domicile »,
   zone desservie Oran sans adresse publique, photos, lien site + WhatsApp.
   C'est le levier n°1 pour Maps / pack local.
 - Soumettre le sitemap à Google Search Console.
 
-## 6. Option multilingue
+## 6. Version Multilingue & Dark Mode (Intégrés en v1)
 
-Français seul en v1. Le multi-langue (arabe) reste une v2 possible — le site
-statique rend l'ajout trivial plus tard (dossier `/ar/`), contrairement à Odoo.
+- **Version Arabe Algérie** : Bascule instantanée FR / عربي dans l'en-tête, sans rechargement.
+  Support natif RTL (`dir="rtl"`), inversion des alignements et typographie Google **Tajawal**.
+  Vocabulaire adapté au marché oranais (*« كوافيز محترفة في منزلك »*, *« أوندوي »*, *« باك العروسة »*).
+- **Dark Mode Luxueux** : Bascule Soleil / Lune dans l'en-tête, fond noir espresso/charbon `#120f11`,
+  bordures or ambré et typographie crème, mémorisé dans `localStorage`.
+- **Palette Mode Clair** : *Méditerranée & Terracotta* (`#b85d38` et blanc lin `#fcfaf8`), chaleureuse et lumineuse.

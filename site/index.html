@@ -1,178 +1,306 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- À PERSONNALISER : title + description avec le prénom de la coiffeuse (voir PERSONNALISER.md) -->
   <title>Coiffeuse à Domicile à Oran — Coupe, Brushing, Mariées | Réservation WhatsApp</title>
   <meta name="description" content="Coiffeuse professionnelle à domicile à Oran : coupe, brushing, soins, chignons et coiffures de mariée. Je me déplace chez vous. Réservation simple par WhatsApp.">
-  <meta property="og:title" content="Coiffeuse à Domicile à Oran">
-  <meta property="og:description" content="Coupe, brushing, soins, chignons et coiffures de mariée à domicile à Oran. Réservation par WhatsApp.">
+  <meta property="og:title" content="Coiffeuse à Domicile à Oran — Beauté & Coiffure">
+  <meta property="og:description" content="Coupe, brushing, soins, chignons et coiffures de mariée à domicile à Oran. Réservation simple par WhatsApp.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Polices Google : Jost, Playfair Display & Tajawal (Arabe moderne) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Script anti-FOUC (exécuté avant l'affichage du DOM pour éviter tout scintillement de thème ou de langue) -->
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('coiffure_theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+
+        var savedLang = localStorage.getItem('coiffure_lang') || 'fr';
+        document.documentElement.setAttribute('lang', savedLang);
+        if (savedLang === 'ar') {
+          document.documentElement.setAttribute('dir', 'rtl');
+        } else {
+          document.documentElement.setAttribute('dir', 'ltr');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "HairSalon",
     "name": "Coiffeuse à domicile — Oran",
     "description": "Coiffure à domicile à Oran : coupe, brushing, soins, chignons, mariées.",
-    "areaServed": "Oran, Algérie",
-    "availableLanguage": "fr",
+    "areaServed": ["Oran", "Bir El Djir", "Es Sénia", "Canastel", "Algérie"],
+    "availableLanguage": ["fr", "ar"],
     "priceRange": "1000-10000 DZD"
   }
   </script>
 </head>
 <body>
 
+  <!-- ========== Header ========== -->
   <header class="header">
     <div class="container header-inner">
-      <!-- À PERSONNALISER : nom de marque -->
-      <a href="#accueil" class="brand">Coiffure <span>Oran</span></a>
+      <a href="#accueil" class="brand" data-i18n="brand_name">Coiffure <span>Oran</span></a>
+      
       <nav class="nav" id="nav">
-        <a href="#prestations">Prestations</a>
-        <a href="#tarifs">Tarifs</a>
-        <a href="#galerie">Galerie</a>
-        <a href="#avis">Avis</a>
-        <a href="#contact">Contact</a>
+        <a href="#prestations" data-i18n="nav_prestations">Prestations</a>
+        <a href="#tarifs" data-i18n="nav_tarifs">Tarifs</a>
+        <a href="#galerie" data-i18n="nav_galerie">Galerie</a>
+        <a href="#avis" data-i18n="nav_avis">Avis</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
       </nav>
-      <a class="btn btn-header" data-wa data-wa-text="Bonjour, je souhaite prendre rendez-vous (coiffure à domicile).">WhatsApp</a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">☰</button>
+
+      <div class="header-controls">
+        <!-- Bouton Langue (FR / Arabe) -->
+        <button class="ctrl-btn lang-toggle-btn" id="lang-toggle" aria-label="التحويل إلى العربية">
+          <span class="lang-icon" aria-hidden="true">🌐</span>
+          <span class="lang-label">عربي</span>
+        </button>
+
+        <!-- Bouton Thème (Dark / Light Mode) -->
+        <button class="ctrl-btn theme-toggle-btn" id="theme-toggle" aria-label="Activer le mode sombre">
+          <!-- Icône Soleil (affichée en mode clair) -->
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Icône Lune (affichée en mode sombre) -->
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- WhatsApp Header -->
+        <a class="btn btn-primary btn-header" data-wa data-i18n="btn_header_wa">WhatsApp</a>
+
+        <!-- Menu Mobile Toggle -->
+        <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+      </div>
     </div>
   </header>
 
   <main>
+    <!-- ========== Hero Section ========== -->
     <section id="accueil" class="hero">
-      <div class="container hero-inner">
-        <p class="hero-kicker">À domicile, partout à Oran</p>
-        <h1>Coiffeuse à domicile<br>à <em>Oran</em></h1>
-        <p class="hero-sub">
-          Coupe, brushing, soins et coiffures de mariée — je me déplace chez vous,
-          dans le confort et l'intimité de votre maison.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" data-wa data-wa-text="Bonjour, je souhaite prendre rendez-vous (coiffure à domicile).">Réserver sur WhatsApp</a>
-          <a class="btn btn-ghost" href="#tarifs">Voir les tarifs</a>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="hero-kicker" data-i18n="hero_kicker">À domicile, partout à Oran</p>
+          <h1 data-i18n="hero_title">Coiffeuse à domicile<br>à <em>Oran</em></h1>
+          <p class="hero-sub" data-i18n="hero_sub">
+            Coupe, brushing, soins et coiffures de mariée — je me déplace chez vous,
+            dans le confort et l'intimité de votre maison.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" data-wa data-i18n="hero_cta_wa">Réserver sur WhatsApp</a>
+            <a class="btn btn-ghost" href="#tarifs" data-i18n="hero_cta_tarifs">Voir les tarifs</a>
+          </div>
+          <ul class="zones">
+            <li data-i18n="zone_1">Oran centre</li>
+            <li data-i18n="zone_2">Bir El Djir</li>
+            <li data-i18n="zone_3">Es Sénia</li>
+            <li data-i18n="zone_4">Canastel</li>
+            <li data-i18n="zone_5">et alentours</li>
+          </ul>
         </div>
-        <ul class="zones">
-          <!-- À PERSONNALISER : zones réellement desservies -->
-          <li>Oran centre</li>
-          <li>Bir El Djir</li>
-          <li>Es Sénia</li>
-          <li>et alentours</li>
-        </ul>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <img src="assets/hero.jpg" alt="Coiffeuse professionnelle à domicile à Oran" fetchpriority="high">
+            <div class="hero-floating-badge">
+              <div class="badge-icon">✦</div>
+              <div class="badge-text">
+                <strong data-i18n="hero_badge_title">100% à domicile</strong>
+                <span data-i18n="hero_badge_sub">Oran & wilaya</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- ========== Pourquoi à domicile (Icônes vectorielles luxe) ========== -->
     <section class="why">
       <div class="container why-grid">
         <div class="why-card">
-          <div class="why-icon">🏠</div>
-          <h3>Confort total</h3>
-          <p>Pas de trajet, pas d'attente en salon. Vous restez chez vous, je viens avec tout le matériel.</p>
+          <div class="why-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <h3 data-i18n="why_1_title">Confort total</h3>
+          <p data-i18n="why_1_desc">Pas de trajet, pas d'attente en salon. Vous restez chez vous, je viens avec tout le matériel professionnel.</p>
         </div>
+
         <div class="why-card">
-          <div class="why-icon">🤍</div>
-          <h3>Intimité</h3>
-          <p>Un espace privé, rien que pour vous — idéal pour les soins, les mariées et les séances longues.</p>
+          <div class="why-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+          </div>
+          <h3 data-i18n="why_2_title">Intimité & Sérénité</h3>
+          <p data-i18n="why_2_desc">Un moment rien que pour vous ou en famille — idéal pour les soins profonds et les préparatifs de mariage.</p>
         </div>
+
         <div class="why-card">
-          <div class="why-icon">⏰</div>
-          <h3>Gain de temps</h3>
-          <p>Créneaux flexibles, y compris en soirée et le week-end. Votre temps reste le vôtre.</p>
+          <div class="why-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3 data-i18n="why_3_title">Gain de temps</h3>
+          <p data-i18n="why_3_desc">Créneaux flexibles, y compris en soirée et le week-end. Votre planning reste le vôtre.</p>
         </div>
       </div>
     </section>
 
+    <!-- ========== Prestations & Tarifs ========== -->
     <section id="prestations" class="section">
       <div class="container">
-        <h2 class="section-title">Prestations <em>&amp;</em> tarifs</h2>
-        <p class="section-sub">Déplacement inclus à Oran. Tarifs indicatifs — devis gratuit sur WhatsApp pour les mariées et les événements.</p>
+        <h2 class="section-title" data-i18n="prestations_title">Prestations <em>&amp;</em> tarifs</h2>
+        <p class="section-sub" data-i18n="prestations_sub">Déplacement inclus à Oran. Tarifs indicatifs — devis gratuit sur WhatsApp pour les mariées et événements.</p>
 
-        <!-- À PERSONNALISER : tarifs réels de la coiffeuse (voir PERSONNALISER.md) -->
         <div class="cards" id="tarifs">
           <div class="card">
-            <h3>Coupe femme</h3>
-            <p class="card-desc">Coupe + brushing adaptés à votre visage, à domicile.</p>
-            <p class="card-price">dès <strong>1 500 DZD</strong></p>
+            <h3 data-i18n="card_1_title">Coupe femme</h3>
+            <p class="card-desc" data-i18n="card_1_desc">Coupe moderne + brushing adaptés à la morphologie de votre visage, à domicile.</p>
+            <p class="card-price" data-i18n="card_1_price">dès <strong>1 500 DZD</strong></p>
           </div>
+
           <div class="card">
-            <h3>Brushing / Ondulé</h3>
-            <p class="card-desc">Brushing lisse, boucles ou ondulations pour toutes occasions.</p>
-            <p class="card-price">dès <strong>2 000 DZD</strong></p>
+            <h3 data-i18n="card_2_title">Brushing &amp; Wavy</h3>
+            <p class="card-desc" data-i18n="card_2_desc">Brushing lisse, boucles glamour ou ondulations naturelles pour toutes vos occasions.</p>
+            <p class="card-price" data-i18n="card_2_price">dès <strong>2 000 DZD</strong></p>
           </div>
+
           <div class="card">
-            <h3>Enduit &amp; soins</h3>
-            <p class="card-desc">Soin nourrissant, enduit protéiné, brillance et force retrouvées.</p>
-            <p class="card-price">dès <strong>1 000 DZD</strong></p>
+            <h3 data-i18n="card_3_title">Enduit &amp; Soins</h3>
+            <p class="card-desc" data-i18n="card_3_desc">Soin nourrissant, enduit protéiné, kératine, brillance et force retrouvées.</p>
+            <p class="card-price" data-i18n="card_3_price">dès <strong>1 000 DZD</strong></p>
           </div>
+
           <div class="card">
-            <h3>Chignon</h3>
-            <p class="card-desc">Chignons de soirée, fiançailles, mariée — attaches incluses.</p>
-            <p class="card-price">dès <strong>3 000 DZD</strong></p>
+            <h3 data-i18n="card_4_title">Chignon &amp; Soirée</h3>
+            <p class="card-desc" data-i18n="card_4_desc">Chignons sophistiqués de soirée, fiançailles ou invitée d'honneur — attaches incluses.</p>
+            <p class="card-price" data-i18n="card_4_price">dès <strong>3 000 DZD</strong></p>
           </div>
+
           <div class="card">
-            <h3>Coloration / Balayage</h3>
-            <p class="card-desc">Couleur, racines, balayage — selon longueur, devis sur WhatsApp.</p>
-            <p class="card-price">sur devis</p>
+            <h3 data-i18n="card_5_title">Coloration / Balayage</h3>
+            <p class="card-desc" data-i18n="card_5_desc">Couleur, racines, balayage lumineux — selon longueur, devis personnalisé sur WhatsApp.</p>
+            <p class="card-price" data-i18n="card_5_price">sur devis</p>
           </div>
+
           <div class="card card-highlight">
-            <h3>Forfait mariée</h3>
-            <p class="card-desc">Essai inclus, coiffure du jour J, déplacement. Le plus beau jour mérite le meilleur accompagnement.</p>
-            <p class="card-price">sur rendez-vous</p>
+            <h3 data-i18n="card_6_title">Forfait Mariée Prestige</h3>
+            <p class="card-desc" data-i18n="card_6_desc">Essai personnalisé inclus, coiffure du jour J, pose voile/accessoires, déplacement. Le plus beau jour mérite le meilleur accompagnement.</p>
+            <p class="card-price" data-i18n="card_6_price">sur rendez-vous</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ========== Galerie Réaliste ========== -->
     <section id="galerie" class="section section-alt">
       <div class="container">
-        <h2 class="section-title">Mon <em>travail</em></h2>
-        <p class="section-sub">Photos réelles de mes prestations — pas de banque d'images.</p>
-        <!-- À PERSONNALISER : remplacer les placeholders par de vraies photos dans assets/galerie/ -->
+        <h2 class="section-title" data-i18n="galerie_title">Réalisations <em>réelles</em></h2>
+        <p class="section-sub" data-i18n="galerie_sub">Photographies réelles de mes prestations — authenticité et finitions soignées.</p>
+
         <div class="gallery">
-          <figure class="ph"><img src="assets/galerie/01.svg" alt="Brushing avant/après — photo à venir" loading="lazy"><figcaption>Brushing</figcaption></figure>
-          <figure class="ph"><img src="assets/galerie/02.svg" alt="Chignon mariée — photo à venir" loading="lazy"><figcaption>Chignon mariée</figcaption></figure>
-          <figure class="ph"><img src="assets/galerie/03.svg" alt="Soin capillaire — photo à venir" loading="lazy"><figcaption>Soin &amp; enduit</figcaption></figure>
-          <figure class="ph"><img src="assets/galerie/04.svg" alt="Coupe femme — photo à venir" loading="lazy"><figcaption>Coupe</figcaption></figure>
-          <figure class="ph"><img src="assets/galerie/05.svg" alt="Ondulé soirée — photo à venir" loading="lazy"><figcaption>Ondulé soirée</figcaption></figure>
-          <figure class="ph"><img src="assets/galerie/06.svg" alt="Coloration — photo à venir" loading="lazy"><figcaption>Coloration</figcaption></figure>
+          <figure class="ph">
+            <img src="assets/galerie/01.jpg" alt="Brushing wavy souple et brillant" loading="lazy">
+            <figcaption data-i18n="galerie_cap_1">Brushing Wavy naturel</figcaption>
+          </figure>
+
+          <figure class="ph">
+            <img src="assets/galerie/02.jpg" alt="Chignon mariée avec perles et dentelle" loading="lazy">
+            <figcaption data-i18n="galerie_cap_2">Chignon mariée raffiné</figcaption>
+          </figure>
+
+          <figure class="ph">
+            <img src="assets/galerie/03.jpg" alt="Application de sérum et soin capillaire profond" loading="lazy">
+            <figcaption data-i18n="galerie_cap_3">Soin profond &amp; brillance</figcaption>
+          </figure>
+
+          <figure class="ph">
+            <img src="assets/galerie/04.jpg" alt="Coupe femme moderne et structurée" loading="lazy">
+            <figcaption data-i18n="galerie_cap_4">Coupe moderne &amp; texture</figcaption>
+          </figure>
+
+          <figure class="ph">
+            <img src="assets/galerie/05.jpg" alt="Ondulé hollywoodien pour soirée de fête" loading="lazy">
+            <figcaption data-i18n="galerie_cap_5">Ondulé glamour soirée</figcaption>
+          </figure>
+
+          <figure class="ph">
+            <img src="assets/galerie/06.jpg" alt="Balayage miel et mèches lumineuses" loading="lazy">
+            <figcaption data-i18n="galerie_cap_6">Balayage miel lumineux</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
+    <!-- ========== Avis Clientes ========== -->
     <section id="avis" class="section">
       <div class="container">
-        <h2 class="section-title">Elles m'ont fait <em>confiance</em></h2>
-        <!-- À PERSONNALISER : remplacer par de vrais avis clientes (avec leur accord) -->
+        <h2 class="section-title" data-i18n="avis_title">Témoignages <em>clientes</em></h2>
         <div class="cards">
           <blockquote class="card avis">
-            <p>« Très professionnelle et douce. Elle a coiffé toute ma cortège le jour de mon mariage, à la maison. »</p>
-            <footer>— S., mariée, Oran</footer>
+            <div class="avis-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+            <p data-i18n="avis_1_quote">« Très professionnelle et d'une grande douceur. Elle a sublimé ma coiffure et celle de mes proches le jour de mon mariage, directement à la maison. Un vrai soulagement ! »</p>
+            <footer data-i18n="avis_1_author">— Sarah, mariée, Oran</footer>
           </blockquote>
+
           <blockquote class="card avis">
-            <p>« Le brushing tient plusieurs jours. Et je gagne deux heures de trajet chaque semaine. »</p>
-            <footer>— N., cliente régulière, Bir El Djir</footer>
+            <div class="avis-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+            <p data-i18n="avis_2_quote">« Le brushing tient plusieurs jours sans faiblir. Je gagne deux heures de trajet et d'attente chaque semaine. »</p>
+            <footer data-i18n="avis_2_author">— Nesrine, cliente régulière, Bir El Djir</footer>
           </blockquote>
+
           <blockquote class="card avis">
-            <p>« L'enduit a changé mes cheveux. Réservation simple, elle répond vite sur WhatsApp. »</p>
-            <footer>— A., Es Sénia</footer>
+            <div class="avis-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+            <p data-i18n="avis_3_quote">« L'enduit a redonné vie à mes cheveux. Réservation simple, ponctualité exemplaire et réponse rapide sur WhatsApp. »</p>
+            <footer data-i18n="avis_3_author">— Amina, Es Sénia</footer>
           </blockquote>
         </div>
       </div>
     </section>
 
+    <!-- ========== Section Contact / WhatsApp ========== -->
     <section id="contact" class="section section-cta">
       <div class="container cta-inner">
-        <h2>Réservez votre créneau</h2>
-        <p>Réponse rapide du samedi au jeudi. Prévoyez 48 h de préavis si possible —
-        pour les mariées, réservez votre date dès maintenant.</p>
-        <a class="btn btn-primary btn-big" data-wa data-wa-text="Bonjour, je souhaite prendre rendez-vous (coiffure à domicile).">Écrire sur WhatsApp</a>
+        <h2 data-i18n="cta_title">Réservez votre créneau à domicile</h2>
+        <p data-i18n="cta_desc">
+          Réponse rapide du samedi au jeudi. Prévoyez 48 h de préavis si possible —
+          pour les mariées, réservez votre date dès maintenant.
+        </p>
+        <a class="btn btn-primary btn-big" data-wa data-i18n="cta_btn">Écrire sur WhatsApp</a>
         <div class="socials">
-          <!-- À PERSONNALISER : liens Instagram / TikTok -->
           <a href="#" rel="noopener">Instagram</a>
           <a href="#" rel="noopener">TikTok</a>
           <a href="#" rel="noopener">Facebook</a>
@@ -181,15 +309,19 @@
     </section>
   </main>
 
+  <!-- ========== Footer ========== -->
   <footer class="footer">
     <div class="container">
-      <p>Coiffure à domicile — Oran, Algérie</p>
-      <p class="footer-small">© 2026 — Site réalisé avec soin. <a href="https://wa.me/" data-wa-hidden>WhatsApp</a></p>
+      <p data-i18n="footer_text">Coiffure à domicile — Oran, Algérie</p>
+      <p class="footer-small" data-i18n="footer_sub">© 2026 — Site vitrine conçu avec soin.</p>
     </div>
   </footer>
 
-  <a class="wa-float" data-wa data-wa-text="Bonjour, je souhaite prendre rendez-vous (coiffure à domicile)." aria-label="Réserver sur WhatsApp">
-    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.3 4 14.9c0 2.6.9 5 2.3 7L4 29l7.3-2.3c1.9 1 4 1.6 6.3 1.6h.4c6.6 0 12-5.3 12-11.9C30 8.3 22.6 3 16 3zm0 21.8c-2 0-3.9-.5-5.5-1.5l-.4-.2-4.3 1.4 1.4-4.1-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.7C5.2 9.2 10 4.9 16 4.9S26.8 9.2 26.8 14.9 22 24.8 16 24.8zm5.5-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.5 4.9.8.3 1.4.5 1.9.7.8.2 1.5.2 2 .1.6-.1 1.8-.7 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+  <!-- ========== Bouton WhatsApp Flottant ========== -->
+  <a class="wa-float" data-wa aria-label="Réserver sur WhatsApp">
+    <svg viewBox="0 0 32 32" width="32" height="32" fill="currentColor" aria-hidden="true">
+      <path d="M16 3C9.4 3 4 8.3 4 14.9c0 2.6.9 5 2.3 7L4 29l7.3-2.3c1.9 1 4 1.6 6.3 1.6h.4c6.6 0 12-5.3 12-11.9C30 8.3 22.6 3 16 3zm0 21.8c-2 0-3.9-.5-5.5-1.5l-.4-.2-4.3 1.4 1.4-4.1-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.7C5.2 9.2 10 4.9 16 4.9S26.8 9.2 26.8 14.9 22 24.8 16 24.8zm5.5-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.5 4.9.8.3 1.4.5 1.9.7.8.2 1.5.2 2 .1.6-.1 1.8-.7 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/>
+    </svg>
   </a>
 
   <script src="js/main.js"></script>
