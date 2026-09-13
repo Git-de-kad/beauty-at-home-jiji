@@ -5,6 +5,23 @@ chaque `git push` publiera automatiquement le site.
 
 ---
 
+## ✅ ÉTAT (2026-09-13) : SITE EN LIGNE
+
+**URL de production : https://beauty-at-home-jiji.pages.dev**
+
+Déployé via Wrangler (upload direct avec le token du `.env` du workspace) —
+le projet Pages n'est PAS encore connecté au repo GitHub. Pour republier après
+une modification :
+
+```bash
+./deploy/deploy.sh && wrangler pages deploy dist --project-name beauty-at-home-jiji --branch main
+```
+
+(option : connecter le repo dans le dashboard Cloudflare pour un déploiement
+automatique à chaque `git push` — section A ci-dessous.)
+
+---
+
 ## A. Cloudflare Pages connecté à GitHub (recommandé)
 
 ### 1. Pousser sur GitHub

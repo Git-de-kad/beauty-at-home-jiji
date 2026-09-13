@@ -54,5 +54,8 @@ Le marché existe pourtant (prestataires actifs sur TikTok, Instagram, Bricoram,
       hybride retenu A+B (clair éditorial / sombre noir & or), bilingue FR/AR (RTL) (2026-09-12)
 - [x] QA visuelle complète (5 états × desktop/mobile) validée (2026-09-12)
 - [ ] Personnalisation finale par la coiffeuse (prénom, numéro WhatsApp réel, vraies photos)
-- [ ] Choix du nom de domaine + mise en ligne sur Cloudflare Pages
-- [ ] Fiche Google Business Profile
+- [x] Mise en ligne Cloudflare Pages : https://beauty-at-home-jiji.pages.dev (2026-09-13)
+- [ ] Google Business Profile + Search Console (SEO post-lancement)
+- [ ] Numéro WhatsApp réel dans js/main.js (bloquant avant diffusion large)
+- [ ] Vraies photos (remplacer assets/)
+- [ ] Domaine beautyathome.dz + branche custom domain
