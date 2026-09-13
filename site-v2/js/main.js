@@ -4,7 +4,7 @@
 
 // Numéro WhatsApp au format international SANS + ni 0
 // Exemple pour un numéro algérien 0661 23 45 67 -> 213661234567
-const WHATSAPP_NUMBER = "213XXXXXXXXX";
+const WHATSAPP_NUMBER = "213796842764";
 
 // ============================================================
 // DICTIONNAIRE BILINGUE : Français / Arabe Algérie (darija raffinée)
@@ -29,6 +29,8 @@ const I18N = {
     footer_small: "© 2026 — Site conçu avec soin.",
     menu_open: "Ouvrir le menu",
     menu_close: "Fermer le menu",
+    banner_dev: "Site en cours de développement — dites-nous ce que vous en pensez !",
+    banner_close: "Fermer le bandeau",
 
     // --- Accueil ---
     kicker: "Coiffeuse à domicile — Oran &amp; wilaya",
@@ -134,7 +136,7 @@ const I18N = {
     contact_h1: "Parlons de <em>votre coiffure</em>",
     contact_lead: "Une question, un devis, une date à bloquer ? Un message WhatsApp suffit — je réponds moi-même, du samedi au jeudi.",
     info_label: "Informations",
-    info_1_l: "WhatsApp", info_1_v: "Le moyen le plus rapide — messages et appels",
+    info_1_l: "WhatsApp", info_1_v: "+213 796 84 27 64 — le moyen le plus rapide, messages et appels",
     info_2_l: "Horaires", info_2_v: "Du samedi au jeudi · créneaux souples, y compris en soirée",
     info_3_l: "Zones", info_3_v: "Oran centre, Bir El Djir, Es Sénia, Canastel et alentours",
     info_4_l: "Délai", info_4_v: "48 h de préavis si possible · mariées : réservez dès maintenant",
@@ -217,6 +219,8 @@ const I18N = {
     footer_small: "© 2026 — موقع مصمم بإتقان.",
     menu_open: "فتح القائمة",
     menu_close: "إغلاق القائمة",
+    banner_dev: "الموقع في طور التطوير — قولولنا رايكم!",
+    banner_close: "إغلاق الشريط",
 
     // --- الرئيسية ---
     kicker: "كوافيز في الدار — وهران والضواحي",
@@ -322,7 +326,7 @@ const I18N = {
     contact_h1: "نهضرو على <em>شعرك</em>",
     contact_lead: "سؤال، استشارة، ولا تاريخ تحجريه؟ رسالة واتساب تكفي — نجاوب شخصياً، من السبت للخميس.",
     info_label: "معلومات",
-    info_1_l: "واتساب", info_1_v: "الطريقة الأسرع — رسائل ومكالمات",
+    info_1_l: "واتساب", info_1_v: "+213 796 84 27 64 — الطريقة الأسرع، رسائل ومكالمات",
     info_2_l: "التوقيت", info_2_v: "من السبت للخميس · مواعيد مرنة، حتى في المساء",
     info_3_l: "المناطق", info_3_v: "وسط وهران، بئر الجير، السانية، كانستيل والضواحي",
     info_4_l: "المهلة", info_4_v: "يفضل الحجز قبل 48 ساعة · العرائس: احجزي من الآن",
@@ -502,6 +506,20 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+  // Bandeau « en cours de développement »
+  const banner = document.getElementById("dev-banner");
+  if (banner) {
+    if (localStorage.getItem("dev_banner_dismissed")) {
+      banner.remove();
+    } else {
+      const closeBtn = banner.querySelector(".dev-banner-close");
+      if (closeBtn) closeBtn.addEventListener("click", () => {
+        banner.remove();
+        localStorage.setItem("dev_banner_dismissed", "1");
+      });
+    }
+  }
 
   // FAQ (accordéon)
   document.querySelectorAll(".faq-q").forEach((btn) => {
