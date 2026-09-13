@@ -96,8 +96,12 @@ html[lang="ar"] em { font-style: normal; }
 .brand { font-family: var(--serif); font-size: 1.15rem; line-height: 1.1; letter-spacing: 0.02em; white-space: nowrap; }
 .brand em { color: var(--accent); }
 
-.nav { display: flex; gap: 2rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.14em; }
-.nav a { position: relative; padding: 0.2rem 0; color: var(--ink-soft); }
+.nav { display: flex; gap: 1.5rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; }
+.nav a { position: relative; padding: 0.2rem 0; color: var(--ink-soft); white-space: nowrap; }
+@media (max-width: 1250px) {
+  .nav { gap: 0.9rem; font-size: 0.72rem; }
+  .header-cta { padding: 0.55rem 1rem; }
+}
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
 .nav a::after {
   content: ""; position: absolute; inset: auto 0 0 0; height: 1px;
@@ -391,7 +395,7 @@ html[lang="ar"] .info-list .info-label { text-transform: none; }
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .header-inner { padding: 0.9rem 1.4rem; }
   .nav, .header-cta { display: none; }
   .nav-toggle { display: block; }
