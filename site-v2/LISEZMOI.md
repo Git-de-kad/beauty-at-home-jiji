@@ -17,9 +17,12 @@ Bilingue **Français / عربي (RTL, Tajawal)** avec bascule instantanée et pe
 | `apropos.html` | Hadjira coiffeuse Oran / Institut de Beauté Ali | portrait, bio, mise en avant de l'Institut de Beauté Ali (réputation RS), 3 atouts |
 | `contact.html` | contact / rendez-vous coiffeuse Oran | infos pratiques + **FAQ (5 questions, Schema.org FAQPage)** |
 
-**Nom de marque** : « L'Atelier d'Hadjira » est un **titre de travail** (le nom
-définitif n'est pas choisi). Pour le changer : clés `brand_name` FR + AR dans
-`js/main.js`, `<title>` et JSON-LD de chaque page, `sitemap.xml`/`robots.txt`.
+**Nom de marque** : **Beauty at Home by Jiji** (soins + maison — la promesse du
+business). « Jiji » est le diminutif d'Hadjira ; son vrai prénom reste utilisé
+sur la page À propos (confiance + SEO « hadjira coiffeuse oran »). Domaine
+suggéré : `beautyathome.dz` (libre au 2026-09-13, ~à confirmer à l'achat) ;
+repli `beautyathomebyjiji.com`. Pour changer la marque : clés `brand_name` FR + AR
+dans `js/main.js`, `<title>` et JSON-LD de chaque page, `sitemap.xml`/`robots.txt`.
 
 SEO : titres/descriptions uniques par page, canonical, Open Graph, JSON-LD
 HairSalon + FAQPage (+ Person sur à propos), `sitemap.xml`, `robots.txt`.

@@ -6,4 +6,4 @@ Disallow: /variantes/
 Disallow: /apercus/
 
 # ⚠️ Remplacer par le vrai domaine après la mise en ligne
-Sitemap: https://coiffeuse-oran.example/sitemap.xml
+Sitemap: https://beautyathome.dz/sitemap.xml

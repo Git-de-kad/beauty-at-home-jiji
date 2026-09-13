@@ -16,7 +16,7 @@ const WHATSAPP_NUMBER = "213XXXXXXXXX";
 const I18N = {
   fr: {
     // --- Commun ---
-    brand_name: "L'Atelier <em>d'Hadjira</em>",
+    brand_name: "Beauty at Home <em>by Jiji</em>",
     nav_accueil: "Accueil",
     nav_prestations: "Prestations",
     nav_mariee: "Mariées",
@@ -204,7 +204,7 @@ const I18N = {
 
   ar: {
     // --- مشترك ---
-    brand_name: "أتيليه <em>حاجرة</em>",
+    brand_name: "بيوتي أت هوم <em>باي جيجي</em>",
     nav_accueil: "الرئيسية",
     nav_prestations: "الخدمات",
     nav_mariee: "العرائس",
